@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article Portal</title>
+    <title>Research Participation Portal</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,22 +13,35 @@
             align-items: center;
             justify-content: center;
             margin: 0;
-            color: #1b3022;
+            color: #228b22; /* Lighter Forest Green */
         }
+
         .card {
             background: #ffffff;
             padding: 3rem;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(27, 48, 34, 0.1); 
+            box-shadow: 0 10px 30px rgba(34, 139, 34, 0.1); 
             border: 1px solid #e0e0e0;
             text-align: center;
             max-width: 450px;
             width: 90%;
         }
-        h1 { color: #1b3022; font-weight: 600; margin-bottom: 15px; }
-        p { color: #4a5d50; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; }
+
+        h1 {
+            color: #228b22; /* Lighter Forest Green */
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #4a5d50;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
         button {
-            background-color: #1b3022;
+            background-color: #228b22; /* Lighter Forest Green */
             color: #ffffff;
             border: none;
             padding: 16px 35px;
@@ -37,28 +50,59 @@
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(34, 139, 34, 0.2);
         }
-        button:hover {
-            background-color: #2d523a;
+
+        button:hover:not(:disabled) {
+            background-color: #2eaf2e; /* Brighter green on hover */
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(34, 139, 34, 0.3);
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <h1>Welcome</h1>
-        <p>You will be taken to one of our article forms.</p>
-        <button onclick="goToRandom()">Open Form</button>
+        <h1>Research Portal</h1>
+        <p>You will be taken to one of our article forms. Please note that you may only participate in this study once.</p>
+        
+        <button id="surveyButton" onclick="goToRandom()">Open Form</button>
     </div>
+
     <script>
+        window.onload = function() {
+            if (localStorage.getItem("hasParticipated") === "true") {
+                const btn = document.getElementById("surveyButton");
+                btn.disabled = true;
+                btn.innerText = "Access Used";
+            }
+        };
+
         function goToRandom() {
+            const btn = document.getElementById("surveyButton");
+            localStorage.setItem("hasParticipated", "true");
+            btn.disabled = true;
+            btn.innerText = "Redirecting...";
+
             const sites = [
                 "https://docs.google.com/forms/d/e/1FAIpQLSfMiDG3yYsWzr2L16fgf1vTMhp4lQdWz3J-oeEnlNsvZ9syxw/viewform",
                 "https://docs.google.com/forms/d/e/1FAIpQLSeAuoEv4bggOVW_fbspZXyBix24ZYiReOnZeKvIHgCfsCicQA/viewform",
                 "https://docs.google.com/forms/d/e/1FAIpQLSejyPpkYdblL5oZ6VJFdRHXRcoCcn3fTvpTYxJVpIl4hHgr1g/viewform"
             ];
+            
             const randomIndex = Math.floor(Math.random() * sites.length);
-            window.location.href = sites[randomIndex];
+            
+            setTimeout(() => {
+                window.location.href = sites[randomIndex];
+            }, 400);
         }
     </script>
 </body>
