@@ -3,88 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Portal</title>
+    <title>Article Portal</title>
     <style>
-        /* Modern styling */
+        /* Modern Forest Green & White Theme */
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff; /* Clean white background */
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
-            color: #ffffff;
+            color: #1b3022; /* Very dark green text */
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px); /* Frosted glass effect */
+            background: #ffffff;
             padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            /* Suble green-tinted shadow */
+            box-shadow: 0 10px 30px rgba(27, 48, 34, 0.1); 
+            border: 1px solid #e0e0e0;
             text-align: center;
-            max-width: 400px;
+            max-width: 450px;
             width: 90%;
         }
 
         h1 {
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            color: #1b3022; /* Dark Forest Green */
+            font-weight: 600;
+            margin-bottom: 15px;
         }
 
         p {
-            opacity: 0.8;
+            color: #4a5d50; /* Muted forest green for subtext */
             margin-bottom: 30px;
-            line-height: 1.5;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         button {
-            background-color: #ffffff;
-            color: #764ba2;
+            background-color: #1b3022; /* Dark Forest Green highlight */
+            color: #ffffff;
             border: none;
-            padding: 15px 40px;
+            padding: 16px 35px;
             font-size: 1rem;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(27, 48, 34, 0.2);
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        button:active {
-            transform: translateY(-1px);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="card">
-        <h1>Welcome</h1>
-        <p>You will be randomly assigned to one of our three feedback forms.</p>
-        
-        <button onclick="goToRandom()">Start Form</button>
-    </div>
-
-    <script>
-        function goToRandom() {
-            // Replace these with your 'Send' links for best results!
-            const sites = [
-                "https://docs.google.com/forms/d/e/1FAIpQLSfMiDG3yYsWzr2L16fgf1vTMhp4lQdWz3J-oeEnlNsvZ9syxw/viewform",
-                "https://docs.google.com/forms/d/e/1FAIpQLSeAuoEv4bggOVW_fbspZXyBix24ZYiReOnZeKvIHgCfsCicQA/viewform",
-                "https://docs.google.com/forms/d/e/1FAIpQLSejyPpkYdblL5oZ6VJFdRHXRcoCcn3fTvpTYxJVpIl4hHgr1g/viewform"
-            ];
-            
-            const randomIndex = Math.floor(Math.random() * sites.length);
-            window.location.href = sites[randomIndex];
-        }
-    </script>
-</body>
-</html>
+            background-color: #2d523a; /* Slightly lighter green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(27, 48, 34, 0.3);
