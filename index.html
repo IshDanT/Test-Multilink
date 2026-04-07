@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article Portal</title>
     <style>
-        /* Modern Forest Green & White Theme */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #ffffff;
@@ -16,7 +15,6 @@
             margin: 0;
             color: #1b3022;
         }
-
         .card {
             background: #ffffff;
             padding: 3rem;
@@ -27,20 +25,8 @@
             max-width: 450px;
             width: 90%;
         }
-
-        h1 {
-            color: #1b3022;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #4a5d50;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
+        h1 { color: #1b3022; font-weight: 600; margin-bottom: 15px; }
+        p { color: #4a5d50; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; }
         button {
             background-color: #1b3022;
             color: #ffffff;
@@ -51,29 +37,19 @@
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(27, 48, 34, 0.2);
         }
-
         button:hover {
             background-color: #2d523a;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(27, 48, 34, 0.3);
-        }
-
-        button:active {
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-
     <div class="card">
         <h1>Welcome</h1>
         <p>You will be taken to one of our article forms.</p>
-        
         <button onclick="goToRandom()">Open Form</button>
     </div>
-
     <script>
         function goToRandom() {
             const sites = [
@@ -81,7 +57,6 @@
                 "https://docs.google.com/forms/d/e/1FAIpQLSeAuoEv4bggOVW_fbspZXyBix24ZYiReOnZeKvIHgCfsCicQA/viewform",
                 "https://docs.google.com/forms/d/e/1FAIpQLSejyPpkYdblL5oZ6VJFdRHXRcoCcn3fTvpTYxJVpIl4hHgr1g/viewform"
             ];
-            
             const randomIndex = Math.floor(Math.random() * sites.length);
             window.location.href = sites[randomIndex];
         }
