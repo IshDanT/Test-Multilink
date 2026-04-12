@@ -13,7 +13,7 @@
             align-items: center;
             justify-content: center;
             margin: 0;
-            color: #1f6117; /* Lighter Forest Green */
+            color: #1f6117;
         }
 
         .card {
@@ -28,7 +28,7 @@
         }
 
         h1 {
-            color: #1f6117; /* Lighter Forest Green */
+            color: #1f6117;
             font-weight: 600;
             margin-bottom: 15px;
         }
@@ -41,7 +41,7 @@
         }
 
         button {
-            background-color: #1f6117; /* Lighter Forest Green */
+            background-color: #1f6117;
             color: #ffffff;
             border: none;
             padding: 16px 35px;
@@ -54,7 +54,7 @@
         }
 
         button:hover:not(:disabled) {
-            background-color: #2eaf2e; /* Brighter green on hover */
+            background-color: #2eaf2e;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(34, 139, 34, 0.3);
         }
@@ -74,10 +74,11 @@
         <h1>Research Portal</h1>
         <p>You will be taken to one of our article forms. Please note that you may only participate in this study once.</p>
         
-        <button id="surveyButton" onclick="goToRandom()">Open Form</button>
+        <button id="surveyButton" onclick="goToAssignedGroup()">Open Form</button>
     </div>
 
     <script>
+        // Check if user has already participated when the page loads
         window.onload = function() {
             if (localStorage.getItem("hasParticipated") === "true") {
                 const btn = document.getElementById("surveyButton");
@@ -86,22 +87,22 @@
             }
         };
 
-        function goToRandom() {
+        function goToAssignedGroup() {
             const btn = document.getElementById("surveyButton");
+            
+            // Mark user as participated in their local browser
             localStorage.setItem("hasParticipated", "true");
+            
+            // Update button UI
             btn.disabled = true;
-            btn.innerText = "Redirecting...";
+            btn.innerText = "Assigning Group...";
 
-            const sites = [
-                "https://docs.google.com/forms/d/e/1FAIpQLSfMiDG3yYsWzr2L16fgf1vTMhp4lQdWz3J-oeEnlNsvZ9syxw/viewform",
-                "https://docs.google.com/forms/d/e/1FAIpQLSeAuoEv4bggOVW_fbspZXyBix24ZYiReOnZeKvIHgCfsCicQA/viewform",
-                "https://docs.google.com/forms/d/e/1FAIpQLSejyPpkYdblL5oZ6VJFdRHXRcoCcn3fTvpTYxJVpIl4hHgr1g/viewform"
-            ];
+            // PASTE YOUR GOOGLE SCRIPT URL HERE
+            const googleWebAppUrl = "https://script.google.com/macros/s/AKfycbyoQBXi6J8WRRfaG2Zf_Dd6FApJHIwLw0p3R9Vi-iiWXLPI_dNQWtCla1I1Ja9I1Abmkw/exec"; 
             
-            const randomIndex = Math.floor(Math.random() * sites.length);
-            
+            // Add a slight delay for UI transition, then redirect to the backend script
             setTimeout(() => {
-                window.location.href = sites[randomIndex];
+                window.location.href = googleWebAppUrl;
             }, 400);
         }
     </script>
