@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Participation Portal</title>
     <style>
-        /* 1. NEW: This prevents padding from stretching the card's width */
         * {
             box-sizing: border-box;
         }
@@ -13,7 +12,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #ffffff;
-            height: 100vh; 
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -58,39 +57,17 @@
             box-shadow: 0 4px 6px rgba(34, 139, 34, 0.2);
         }
 
-        button:hover:not(:disabled) {
+        button:hover {
             background-color: #2eaf2e; 
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(34, 139, 34, 0.3);
         }
 
-        button:disabled {
-            background-color: #cccccc;
-            color: #666666;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
         @media (max-width: 480px) {
-            .card {
-                padding: 1.5rem;
-                width: 95%; 
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            p {
-                font-size: 1rem;
-                margin-bottom: 20px;
-            }
-
-            button {
-                padding: 14px 28px;
-                width: 100%;
-            }
+            .card { padding: 1.5rem; width: 95%; }
+            h1 { font-size: 1.5rem; }
+            p { font-size: 1rem; margin-bottom: 20px; }
+            button { padding: 14px 28px; width: 100%; }
         }
     </style>
 </head>
@@ -98,32 +75,32 @@
 
     <div class="card">
         <h1>Research Portal</h1>
-        <p>You will be taken to a google form. You may access this form as many times as needed.</p>
+        <p>Click below to be assigned to a research group. You will be redirected to a Google Form.</p>
         
         <button id="surveyButton" onclick="goToAssignedGroup()">Open Form</button>
     </div>
 
     <script>
-        // Removal of window.onload check allows the button to stay active always
-
         function goToAssignedGroup() {
             const btn = document.getElementById("surveyButton");
             
-            // Update button UI temporarily to show the click was registered
+            // Visual feedback that the click worked
             btn.innerText = "Redirecting...";
+            btn.style.opacity = "0.7";
 
-            // YOUR GOOGLE SCRIPT URL
-            const googleWebAppUrl = "https://script.google.com/macros/s/AKfycbz4nRo0Uy7qbjMcqZJ046LpI50Mljs_ZrR4HAAY1Z-mNyt1HJ9WVu3qSuRTytbGM32tjQ/exec"; 
+            // Your Web App URL
+            const googleWebAppUrl = "https://script.google.com/macros/s/AKfycbyoQBXi6J8WRRfaG2Zf_Dd6FApJHIwLw0p3R9Vi-iiWXLPI_dNQWtCla1I1Ja9I1Abmkw/exec"; 
             
-            // Redirect to the backend script
+            // Small delay for UX then redirect
             setTimeout(() => {
                 window.location.href = googleWebAppUrl;
-                
-                // Reset button text after a delay in case they navigate back
-                setTimeout(() => {
-                    btn.innerText = "Open Form";
-                }, 1000);
-            }, 400);
+            }, 300);
+
+            // Reset button text in case user hits 'Back' button
+            setTimeout(() => {
+                btn.innerText = "Open Form";
+                btn.style.opacity = "1";
+            }, 3000);
         }
     </script>
 </body>
