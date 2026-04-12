@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Participation Portal</title>
     <style>
+        /* 1. NEW: This prevents padding from stretching the card's width */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #ffffff;
-            height: 100vh;
+            height: 100vh; /* If it still jumps on mobile scroll, change this to: min-height: 100dvh; */
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
-            color: #1f6117;
+            color: #1f6117; 
         }
 
         .card {
             background: #ffffff;
-            padding: 3rem;
+            padding: 3rem; 
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(34, 139, 34, 0.1); 
             border: 1px solid #e0e0e0;
@@ -28,7 +33,7 @@
         }
 
         h1 {
-            color: #1f6117;
+            color: #1f6117; 
             font-weight: 600;
             margin-bottom: 15px;
         }
@@ -41,7 +46,7 @@
         }
 
         button {
-            background-color: #1f6117;
+            background-color: #1f6117; 
             color: #ffffff;
             border: none;
             padding: 16px 35px;
@@ -54,7 +59,7 @@
         }
 
         button:hover:not(:disabled) {
-            background-color: #2eaf2e;
+            background-color: #2eaf2e; 
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(34, 139, 34, 0.3);
         }
@@ -66,13 +71,35 @@
             transform: none;
             box-shadow: none;
         }
+
+        /* 2. NEW: Mobile-specific adjustments */
+        @media (max-width: 480px) {
+            .card {
+                padding: 1.5rem; /* Half the padding so text has room to breathe */
+                width: 95%; /* Let it take up a bit more screen width */
+            }
+
+            h1 {
+                font-size: 1.5rem; /* Slightly smaller title */
+            }
+
+            p {
+                font-size: 1rem; /* Slightly smaller text */
+                margin-bottom: 20px;
+            }
+
+            button {
+                padding: 14px 28px; /* Slightly smaller button */
+                width: 100%; /* Makes the button easy to tap with a thumb */
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="card">
         <h1>Research Portal</h1>
-        <p>You will be taken to the last google form. Please note that you may only participate in this study once.</p>
+        <p>You will be taken to a google form. Please note that you may only participate in this study once.</p>
         
         <button id="surveyButton" onclick="goToAssignedGroup()">Open Form</button>
     </div>
